@@ -28,6 +28,25 @@ class MentionerPlugin extends Plugin {
 	function bootstrap() {
 		$backend = new MentionerBackend( $this->getConfig () );
 	}
+	
+	/**
+	 * Required stub.
+	 *
+	 * {@inheritdoc}
+	 *
+	 * @see Plugin::uninstall()
+	 */
+	function uninstall(&$errors) {
+		$errors = array ();
+		parent::uninstall ( $errors );
+	}
+	
+	/**
+	 * Plugins seem to want this.
+	 */
+	public function getForm() {
+		return array ();
+	}
 }
 
 class MentionerBackend {
@@ -461,25 +480,6 @@ class MentionerBackend {
 			return self::User;
 		}
 		return self::System;
-	}
-	
-	/**
-	 * Required stub.
-	 *
-	 * {@inheritdoc}
-	 *
-	 * @see Plugin::uninstall()
-	 */
-	function uninstall(&$errors) {
-		$errors = array ();
-		parent::uninstall ( $errors );
-	}
-	
-	/**
-	 * Plugins seem to want this.
-	 */
-	public function getForm() {
-		return array ();
 	}
 }
 
