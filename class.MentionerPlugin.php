@@ -150,6 +150,10 @@ class MentionerBackend {
 				return $m;
 			}
 		}
+		// Look for first
+		if ($staff = $this->matchFirstname( $name ))
+			return $staff;
+		
 		// Look for first.last
 		if ($staff = $this->matchFirstLast ( $name ))
 			return $staff;
@@ -340,6 +344,18 @@ class MentionerBackend {
 			) );
 		}
 		return null;
+	}
+
+	/**
+	 * Find a Staff object by firstname
+	 *
+	 * @param string $name        	
+	 * @return NULL|Staff
+	 */
+	private function matchFirstname($name) {
+		if (!$this->config->get( 'by-firstname' ))
+			return null;
+		return Staff::lookup ( array ( 'firstname' => $name ) );
 	}
 	
 	/**

@@ -74,6 +74,13 @@ class MentionerPluginConfig extends PluginConfig
                     'length' => 256
                 )
             ]),
+            'sbf' => new SectionBreakField([
+                'label' => $__('Match staff first name?'),
+                'hint' => $__('Check to allow mentioning staff by first name, affects both # and @, but it does\'nt apply to users.')
+            ]),
+            'by-firstname' => new BooleanField([
+                'label' => $__('Match staff by first name')
+            ]),
             'sbh' => new SectionBreakField([
                 'label' => $__('Use @mentions for ticket notifications'),
                 'hint' => $__('Doesn\'t add as a collaborator, just notifies: "You were mentioned!".'),
