@@ -33,16 +33,16 @@ class MentionerPluginConfig extends PluginConfig
         list ($__, $_N) = self::translate();
         return array(
             'sbm' => new SectionBreakField([
-                'label' => $__('Who can be @mentioned and added as a Collaborator?'),
-                'hint' => $__('By default, all Agents and Users are available to be @mentioned')
+                'label' => $__('Who can be #mentioned and added as a Collaborator?'),
+                'hint' => $__('By default, all Agents and Users are available to be #mentioned')
             ]),
-            'at-mentions' => new BooleanField([
-                'label' => $__("Notice @mentions"),
-                'hint' => $__('Enables adding @collaborators'),
+            'mentions' => new BooleanField([
+                'label' => $__("Notice #mentions"),
+                'hint' => $__('Enables adding #collaborators'),
                 'default' => true
             ]),
             'agents-only' => new BooleanField([
-                'label' => $__('Only allow @mentions OF Agents (staff)'),
+                'label' => $__('Only allow #mentions OF Agents (staff)'),
                 'hint' => $__('Add Agent collaborators only')
             ]),
             'sba' => new SectionBreakField([
@@ -75,13 +75,13 @@ class MentionerPluginConfig extends PluginConfig
                 )
             ]),
             'sbh' => new SectionBreakField([
-                'label' => $__('Use #mentions for ticket notifications'),
+                'label' => $__('Use @mentions for ticket notifications'),
                 'hint' => $__('Doesn\'t add as a collaborator, just notifies: "You were mentioned!".'),
                 'default' => TRUE
             ]),
-            'notice-hash' => new BooleanField([
-                'label' => $__('Notice #Mentions'),
-                'hint' => $__('Sends notices to staff mentioned with #name')
+            'notice' => new BooleanField([
+                'label' => $__('Notice @Mentions'),
+                'hint' => $__('Sends notices to staff mentioned with @name')
             ]),
             'notice-subject' => new TextboxField([
                 'label' => $__('Notification Template: Subject'),

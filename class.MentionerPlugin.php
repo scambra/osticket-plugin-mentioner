@@ -102,7 +102,7 @@ class MentionerBackend {
 		// $source = $entry->getSource ();
 		
 		// Match every instance of @name in the thread text
-		if ($this->config->get ( 'at-mentions' ) && $mentions = $this->getMentions ( $text, '@' )) {
+		if ($this->config->get ( 'mentions' ) && $mentions = $this->getMentions ( $text, '#' )) {
 			// Each unique name will get added as a Collaborator to the ticket thread.
 			foreach ( $mentions as $idx => $name ) {
 				$this->addCollaborator ( $entry, $name );
@@ -110,7 +110,7 @@ class MentionerBackend {
 		}
 		
 		// Match every instance of #name in the text
-		if ($this->config->get ( 'notice-hash' ) && $mentions = $this->getMentions ( $text, '#' )) {
+		if ($this->config->get ( 'notice' ) && $mentions = $this->getMentions ( $text, '@' )) {
 			// Build a recipient list, each unique name will get checked for Staff-ishness
 			$stafflist = new StaffMailingList ();
 			foreach ( $mentions as $idx => $name ) {
@@ -440,7 +440,7 @@ class MentionerBackend {
 					'recipient' => $recipient 
 			) );
 			if (self::DEBUG)
-				error_log ( "Emailed {$recipient->getName()} about their #mention with subj {$notice['subj']}" );
+				error_log ( "Emailed {$recipient->getName()} about their @mention with subj {$notice['subj']}" );
 			$email->send ( $recipient, $notice ['subj'], $notice ['body'], $attachments, $options );
 		}
 	}
